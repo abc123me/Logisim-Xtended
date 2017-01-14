@@ -58,7 +58,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <circuit name="main">
     <a name="circuit" val="main"/>
     <a name="clabel" val=""/>
-    <a name="clabelup" val="east"/>
+    <a name="clabelup" val="south"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
     <wire from="(170,450)" to="(360,450)"/>
     <wire from="(310,200)" to="(310,270)"/>
@@ -132,19 +132,29 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(350,40)" to="(350,100)"/>
     <wire from="(230,460)" to="(360,460)"/>
     <wire from="(280,100)" to="(350,100)"/>
-    <comp lib="7" loc="(360,440)" name="Color Screen"/>
-    <comp lib="4" loc="(280,100)" name="Counter"/>
+    <comp lib="4" loc="(160,400)" name="Random"/>
+    <comp lib="4" loc="(280,160)" name="Counter"/>
     <comp lib="5" loc="(310,570)" name="Button">
       <a name="facing" val="north"/>
     </comp>
-    <comp lib="4" loc="(160,400)" name="Random"/>
-    <comp lib="3" loc="(220,420)" name="Multiplier"/>
+    <comp lib="7" loc="(360,170)" name="Screen"/>
+    <comp lib="4" loc="(160,440)" name="Random"/>
+    <comp lib="7" loc="(70,90)" name="Square AND gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="4" loc="(290,230)" name="T Flip-Flop"/>
     <comp lib="0" loc="(230,570)" name="Clock">
       <a name="facing" val="north"/>
     </comp>
-    <comp lib="4" loc="(280,160)" name="Counter"/>
-    <comp lib="7" loc="(360,170)" name="Screen"/>
-    <comp lib="4" loc="(160,440)" name="Random"/>
-    <comp lib="4" loc="(290,230)" name="T Flip-Flop"/>
+    <comp lib="7" loc="(170,120)" name="Square AND gate">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="7" loc="(360,440)" name="Color Screen"/>
+    <comp lib="7" loc="(80,210)" name="Square AND gate"/>
+    <comp lib="4" loc="(280,100)" name="Counter"/>
+    <comp lib="3" loc="(220,420)" name="Multiplier"/>
+    <comp lib="7" loc="(110,200)" name="Square AND gate">
+      <a name="facing" val="west"/>
+    </comp>
   </circuit>
 </project>
