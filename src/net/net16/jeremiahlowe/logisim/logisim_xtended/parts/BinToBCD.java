@@ -17,21 +17,25 @@ import net.net16.jeremiahlowe.logisim.logisim_xtended.Utility;
 
 public class BinToBCD extends InstanceFactory {
 	private static final Attribute<BitWidth> BIT_WIDTH = Attributes.forBitWidth("Bit width", 4, 32);
+	private static final Attribute<Boolean> REVERSE_PORTS = Attributes.forBoolean("Reverse ports");
+	private static final Attribute<Boolean> OFFSET = Attributes.forBoolean("Offset for 7-seg");
+	private static final Attribute<?> INPUT_SIDE = Attributes.forOption("Input side", new Object[]{"Left", "Right"});
 	private Port[] ports;
 	
 	public BinToBCD() {
 		super("Binary to BCD");
 		setAttributes(new Attribute[]{
-				BIT_WIDTH
+				BIT_WIDTH, REVERSE_PORTS, OFFSET, INPUT_SIDE
 		}, new Object[]{
-				BitWidth.create(8)
+				BitWidth.create(8), true, true, "Left"
 		});
 	}
 	
 	@Override 
 	public Bounds getOffsetBounds(AttributeSet attrs){
 		int bitWidth = attrs.getValue(BIT_WIDTH).getWidth();
-		int w = (int) Math.ceil(Math.log10(Math.pow(2, bitWidth))) * 10 + 10;
+		int mult = attrs.getValue(OFFSET) ? 40 : 10;
+		int w = (int) Math.ceil(Math.log10(Math.pow(2, bitWidth))) * mult + 10;
 		return Bounds.create(0, 0, w, 20);
 	}
 	
@@ -72,11 +76,16 @@ public class BinToBCD extends InstanceFactory {
 	private void initPorts(Instance instance){
 		int bitWidth = instance.getAttributeValue(BIT_WIDTH).getWidth();
 		int combs = (int) Math.ceil(Math.log10(Math.pow(2, bitWidth)));
-		ports = new Port[combs+1];
-		ports[combs] = new Port(0, 10, Port.INPUT, bitWidth);
+		ports = new Port[combs+1]; 
+		boolean left = instance.getAttributeValue(INPUT_SIDE) == "Left";
+		ports[combs] = new Port((left ? 0 : instance.getBounds().getWidth()), 10, Port.INPUT, bitWidth);
 		ports[combs].setToolTip(new StringMaker("Value in"));
+		int mult = instance.getAttributeValue(OFFSET) ? 40 : 10;
+		int off = instance.getAttributeValue(OFFSET) ? 20 : 10;
 		for(int i = 0; i < combs; i++){
-			ports[i] = new Port(i * 10 + 10, 0, Port.OUTPUT, 4);
+			Port tmpNonReversed = new Port(i * mult + off, 0, Port.OUTPUT, 4);
+			Port tmpReversed = new Port(((combs * mult) - (i * mult)) - off, 0, Port.OUTPUT, 4);
+			ports[i] = instance.getAttributeValue(REVERSE_PORTS) ? tmpReversed : tmpNonReversed;
 			switch(i){
 				case 0: ports[0].setToolTip(new StringMaker("Ones")); break;
 				case 1: ports[1].setToolTip(new StringMaker("Tens")); break;
