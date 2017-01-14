@@ -13,6 +13,7 @@ import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.RGBLed;
 import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.RGBSquareLed;
 import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.Screen;
 import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.SquareLED;
+import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.logic.SquareAND;
 
 public class Components extends Library {
     private List<Tool> tools;
@@ -24,7 +25,8 @@ public class Components extends Library {
         	new AddTool(new SquareLED()),
         	new AddTool(new Screen()),
         	new AddTool(new ColorScreen()),
-        	new AddTool(new BinToBCD())
+        	new AddTool(new BinToBCD()),
+        	new AddTool(new SquareAND())
     	});
     }
     
