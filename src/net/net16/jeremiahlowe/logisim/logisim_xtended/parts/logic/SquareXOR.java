@@ -24,7 +24,6 @@ public class SquareXOR extends SquareBase{
 				Value res = bitA.xor(bitB);
 				if(res.isErrorValue()) return Value.createError(BitWidth.create(w));
 				if(!res.isFullyDefined()) return Value.createUnknown(BitWidth.create(w));
-				System.out.println(j + ": " + bitA.toDisplayString(2) + " * " + bitB.toDisplayString(2) + ": " + res.toDisplayString(2));
 				Value[] tmp = tmpOutput.getAll();
 				tmp[j] = res;
 				tmpOutput = Value.create(tmp);

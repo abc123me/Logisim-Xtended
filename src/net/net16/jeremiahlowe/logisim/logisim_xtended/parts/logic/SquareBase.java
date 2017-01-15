@@ -27,7 +27,7 @@ public abstract class SquareBase extends InstanceFactory {
 		setAttributes(new Attribute[] { 
 				StdAttr.WIDTH, StdAttr.FACING, INPUTS, SIZE },
 			new Object[] { 
-				BitWidth.create(1), Direction.EAST, 2, "Wide"
+				BitWidth.create(1), Direction.EAST, 2, "Extra wide"
 		});
 	}
 	

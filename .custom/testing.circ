@@ -60,9 +60,32 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <comp lib="7" loc="(190,190)" name="Square AND gate">
-      <a name="Inputs" val="3"/>
-      <a name="Size" val="Narrow"/>
+    <wire from="(170,220)" to="(190,220)"/>
+    <wire from="(170,320)" to="(190,320)"/>
+    <wire from="(160,200)" to="(180,200)"/>
+    <wire from="(170,270)" to="(190,270)"/>
+    <wire from="(180,200)" to="(180,250)"/>
+    <wire from="(180,250)" to="(180,300)"/>
+    <wire from="(170,220)" to="(170,270)"/>
+    <wire from="(170,270)" to="(170,320)"/>
+    <wire from="(180,300)" to="(190,300)"/>
+    <wire from="(180,200)" to="(190,200)"/>
+    <wire from="(160,220)" to="(170,220)"/>
+    <wire from="(180,250)" to="(190,250)"/>
+    <wire from="(220,210)" to="(230,210)"/>
+    <wire from="(220,310)" to="(230,310)"/>
+    <wire from="(220,260)" to="(230,260)"/>
+    <comp lib="7" loc="(190,190)" name="Square AND gate"/>
+    <comp lib="7" loc="(230,300)" name="Square LED"/>
+    <comp lib="7" loc="(190,240)" name="Square OR gate"/>
+    <comp lib="7" loc="(230,250)" name="Square LED"/>
+    <comp lib="7" loc="(190,290)" name="Square XOR gate"/>
+    <comp lib="0" loc="(160,200)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="7" loc="(230,200)" name="Square LED"/>
+    <comp lib="0" loc="(160,220)" name="Pin">
+      <a name="tristate" val="false"/>
     </comp>
   </circuit>
 </project>
