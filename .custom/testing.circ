@@ -75,17 +75,17 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(220,210)" to="(230,210)"/>
     <wire from="(220,310)" to="(230,310)"/>
     <wire from="(220,260)" to="(230,260)"/>
-    <comp lib="7" loc="(190,190)" name="Square AND gate"/>
-    <comp lib="7" loc="(230,300)" name="Square LED"/>
-    <comp lib="7" loc="(190,240)" name="Square OR gate"/>
-    <comp lib="7" loc="(230,250)" name="Square LED"/>
-    <comp lib="7" loc="(190,290)" name="Square XOR gate"/>
+    <comp lib="7" loc="(230,200)" name="Square LED"/>
     <comp lib="0" loc="(160,200)" name="Pin">
       <a name="tristate" val="false"/>
     </comp>
-    <comp lib="7" loc="(230,200)" name="Square LED"/>
     <comp lib="0" loc="(160,220)" name="Pin">
       <a name="tristate" val="false"/>
     </comp>
+    <comp lib="7" loc="(190,290)" name="Square XOR gate"/>
+    <comp lib="7" loc="(230,300)" name="Square LED"/>
+    <comp lib="7" loc="(190,190)" name="Square AND gate"/>
+    <comp lib="7" loc="(190,240)" name="Square OR gate"/>
+    <comp lib="7" loc="(230,250)" name="Square LED"/>
   </circuit>
 </project>
