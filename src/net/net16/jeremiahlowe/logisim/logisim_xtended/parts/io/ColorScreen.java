@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import com.cburch.logisim.data.Attribute;
 import com.cburch.logisim.data.AttributeSet;
+import com.cburch.logisim.data.Attributes;
 import com.cburch.logisim.data.Bounds;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.Instance;
@@ -22,15 +23,16 @@ import net.net16.jeremiahlowe.logisim.logisim_xtended.CommonAttr;
 import net.net16.jeremiahlowe.logisim.logisim_xtended.Utility;
 
 public class ColorScreen extends InstanceFactory{
+	private static final Attribute<Color> DEFAULT_COLOR = Attributes.forColor("Default color");
 	private static final int X_IN = 0, Y_IN = 1, R_IN = 2, G_IN = 3, B_IN = 4, SET = 5, RESET = 6;
 	private Port[] ports = new Port[7];
 	
 	public ColorScreen() {
 		super("Color Screen");
 		setAttributes(new Attribute[] {
-				CommonAttr.SCREEN_SIZE, CommonAttr.COLOR_DETAIL
+				CommonAttr.SCREEN_SIZE, CommonAttr.COLOR_DETAIL, DEFAULT_COLOR
 			}, new Object[] {
-				256, 8
+				256, 8, Color.black
 			});
 		setIcon(IconGetter.getIcon("ColorScreen.png"));
 	}
@@ -66,7 +68,7 @@ public class ColorScreen extends InstanceFactory{
 		BufferedImage img = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
 		for(int x = 0; x < size; x++){
 			for(int y = 0; y < size; y++){
-				if(state.getPixel(x, y) == null) state.setPixel(x, y, new Pixel(Color.BLACK));
+				if(state.getPixel(x, y) == null) state.setPixel(x, y, new Pixel(painter.getAttributeValue(DEFAULT_COLOR)));
 				img.setRGB(x, y, state.getPixel(x, y).toColor().getRGB());
 			}
 		}
