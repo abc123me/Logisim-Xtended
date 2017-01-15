@@ -9,37 +9,55 @@ import com.cburch.logisim.data.Direction;
 import com.cburch.logisim.data.Value;
 import com.cburch.logisim.instance.Instance;
 import com.cburch.logisim.instance.InstanceFactory;
+import com.cburch.logisim.instance.InstancePainter;
 import com.cburch.logisim.instance.InstanceState;
 import com.cburch.logisim.instance.Port;
 import com.cburch.logisim.instance.StdAttr;
+import com.cburch.logisim.util.GraphicsUtil;
 
 import net.net16.jeremiahlowe.logisim.logisim_xtended.instance.StringMaker;
 
 public abstract class SquareBase extends InstanceFactory {
 	private static final Attribute<Integer> INPUTS = Attributes.forIntegerRange("Inputs", 2, 32);
+	private static final Attribute<?> SIZE = Attributes.forOption("Size", new Object[]{"Extra wide", "Wide", "Narrow"});
 	public Port[] ports;
 
 	public SquareBase(String name) {
 		super(name);
 		setAttributes(new Attribute[] { 
-				StdAttr.WIDTH, StdAttr.LABEL, StdAttr.FACING, INPUTS },
+				StdAttr.WIDTH, StdAttr.FACING, INPUTS, SIZE },
 			new Object[] { 
-				BitWidth.create(1), "", Direction.EAST, 2 
+				BitWidth.create(1), Direction.EAST, 2, "Wide"
 		});
 	}
 	
-	protected abstract Value doLogicalOperation(Value[] inputs);
+	protected Value doLogicalOperation(Value[] inputs){
+		return null;
+	}
 
 	@Override
 	public void propagate(InstanceState state) {
-		
+		Value[] inputs = new Value[ports.length - 1];
+		for(int i = 1; i < ports.length; i++){
+			inputs[i - 1] = state.getPort(i); 
+		}
+		state.setPort(0, doLogicalOperation(inputs), 0);
+	}
+	
+	@Override
+	public void paintInstance(InstancePainter painter) {
+		Bounds b = painter.getBounds();
+		GraphicsUtil.drawCenteredText(painter.getGraphics(), "WTF", b.getWidth() / 2 + b.getX(), b.getHeight() / 2 + b.getY());
+		painter.drawBounds();
+		painter.drawPorts();
 	}
 
 	@Override
 	public Bounds getOffsetBounds(AttributeSet attrs) {
 		int x = 0;
 		int y = 0;
-		int w = 30;
+		String size = (String) attrs.getValue(SIZE);
+		int w = size == "Extra wide" ? 30 : (size == "Wide" ? 20 : 10);
 		int h = attrs.getValue(INPUTS) * 10 + 10;
 		if((h / 10) % 2 != 0) h += 10;
 		return Bounds.create(x, y, w, h).rotate(Direction.EAST, attrs.getValue(StdAttr.FACING), x, y);
@@ -48,16 +66,14 @@ public abstract class SquareBase extends InstanceFactory {
 	@Override
 	protected void configureNewInstance(Instance instance) {
 		instance.addAttributeListener();
-		initPorts(instance);
 		instance.recomputeBounds();
+		initPorts(instance);
 	}
 
 	@Override
 	protected void instanceAttributeChanged(Instance instance, Attribute<?> attr) {
-		if(attr != StdAttr.LABEL){
-			initPorts(instance);
-			instance.recomputeBounds();
-		}
+		instance.recomputeBounds();
+		initPorts(instance);
 	}
 
 	private void initPorts(Instance instance){
@@ -75,14 +91,17 @@ public abstract class SquareBase extends InstanceFactory {
 			case SOUTH: xm = 1; ym = -1; flip = true; break;
 		}
 		
-		int x = xm * bds.getWidth();
-		int y = ym * (bds.getHeight() / 2);
+		int x = xm * (!flip ? bds.getWidth() : bds.getHeight());
+		int y = ym * (flip ? bds.getWidth() : bds.getHeight()) / 2;
 		ports[0] = new Port(flip ? y : x, flip ? x : y, Port.OUTPUT, bitWidth);
 		ports[0].setToolTip(new StringMaker("Output"));
 		
+		boolean halfMid = (inputPorts % 2 == 0); 
+		int halfVal = inputPorts / 2, off = 0;
 		for(int i = 1; i < ports.length; i++){
 			int tmpX = xm * 0;
-			int tmpY = ym * (i * 10);
+			int tmpY = ym * ((i * 10) + off);
+			off += halfMid && i == halfVal ? 10 : 0;
 			
 			ports[i] = new Port(flip ? tmpY : tmpX, flip ? tmpX : tmpY, Port.INPUT, bitWidth);
 			ports[i].setToolTip(new StringMaker("Input " + i));

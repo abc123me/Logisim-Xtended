@@ -58,103 +58,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <circuit name="main">
     <a name="circuit" val="main"/>
     <a name="clabel" val=""/>
-    <a name="clabelup" val="south"/>
+    <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(170,450)" to="(360,450)"/>
-    <wire from="(310,200)" to="(310,270)"/>
-    <wire from="(240,210)" to="(300,210)"/>
-    <wire from="(170,430)" to="(170,440)"/>
-    <wire from="(170,390)" to="(170,400)"/>
-    <wire from="(260,120)" to="(260,130)"/>
-    <wire from="(310,470)" to="(360,470)"/>
-    <wire from="(310,190)" to="(360,190)"/>
-    <wire from="(240,440)" to="(360,440)"/>
-    <wire from="(260,180)" to="(260,190)"/>
-    <wire from="(260,260)" to="(260,270)"/>
-    <wire from="(310,190)" to="(310,200)"/>
-    <wire from="(120,370)" to="(230,370)"/>
-    <wire from="(340,420)" to="(340,570)"/>
-    <wire from="(240,420)" to="(240,440)"/>
-    <wire from="(300,150)" to="(340,150)"/>
-    <wire from="(270,200)" to="(310,200)"/>
-    <wire from="(310,40)" to="(310,130)"/>
-    <wire from="(230,130)" to="(260,130)"/>
-    <wire from="(350,410)" to="(350,570)"/>
-    <wire from="(290,230)" to="(320,230)"/>
-    <wire from="(330,170)" to="(360,170)"/>
-    <wire from="(280,170)" to="(300,170)"/>
-    <wire from="(340,150)" to="(360,150)"/>
-    <wire from="(250,390)" to="(250,430)"/>
-    <wire from="(230,460)" to="(230,570)"/>
-    <wire from="(170,390)" to="(250,390)"/>
-    <wire from="(350,410)" to="(360,410)"/>
-    <wire from="(160,440)" to="(170,440)"/>
-    <wire from="(160,400)" to="(170,400)"/>
-    <wire from="(170,410)" to="(180,410)"/>
-    <wire from="(170,430)" to="(180,430)"/>
-    <wire from="(310,130)" to="(310,190)"/>
-    <wire from="(320,160)" to="(320,230)"/>
-    <wire from="(170,400)" to="(170,410)"/>
-    <wire from="(170,440)" to="(170,450)"/>
-    <wire from="(260,270)" to="(310,270)"/>
-    <wire from="(350,140)" to="(350,410)"/>
-    <wire from="(340,150)" to="(340,420)"/>
-    <wire from="(310,270)" to="(310,470)"/>
-    <wire from="(270,120)" to="(270,130)"/>
-    <wire from="(300,150)" to="(300,160)"/>
-    <wire from="(270,180)" to="(270,200)"/>
-    <wire from="(290,110)" to="(290,190)"/>
-    <wire from="(120,370)" to="(120,390)"/>
-    <wire from="(330,170)" to="(330,250)"/>
-    <wire from="(250,430)" to="(360,430)"/>
-    <wire from="(240,210)" to="(240,230)"/>
-    <wire from="(240,230)" to="(240,250)"/>
-    <wire from="(230,370)" to="(230,460)"/>
-    <wire from="(270,130)" to="(310,130)"/>
-    <wire from="(290,250)" to="(330,250)"/>
-    <wire from="(320,160)" to="(360,160)"/>
-    <wire from="(310,470)" to="(310,570)"/>
-    <wire from="(260,190)" to="(290,190)"/>
-    <wire from="(280,160)" to="(300,160)"/>
-    <wire from="(340,420)" to="(360,420)"/>
-    <wire from="(120,390)" to="(120,430)"/>
-    <wire from="(340,40)" to="(340,150)"/>
-    <wire from="(300,170)" to="(300,210)"/>
-    <wire from="(350,100)" to="(350,140)"/>
-    <wire from="(220,420)" to="(240,420)"/>
-    <wire from="(280,110)" to="(290,110)"/>
-    <wire from="(230,130)" to="(230,370)"/>
-    <wire from="(350,140)" to="(360,140)"/>
-    <wire from="(120,390)" to="(130,390)"/>
-    <wire from="(120,430)" to="(130,430)"/>
-    <wire from="(240,230)" to="(250,230)"/>
-    <wire from="(240,250)" to="(250,250)"/>
-    <wire from="(350,40)" to="(350,100)"/>
-    <wire from="(230,460)" to="(360,460)"/>
-    <wire from="(280,100)" to="(350,100)"/>
-    <comp lib="4" loc="(160,400)" name="Random"/>
-    <comp lib="4" loc="(280,160)" name="Counter"/>
-    <comp lib="5" loc="(310,570)" name="Button">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="7" loc="(360,170)" name="Screen"/>
-    <comp lib="4" loc="(160,440)" name="Random"/>
-    <comp lib="7" loc="(70,90)" name="Square AND gate">
-      <a name="facing" val="south"/>
-    </comp>
-    <comp lib="4" loc="(290,230)" name="T Flip-Flop"/>
-    <comp lib="0" loc="(230,570)" name="Clock">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="7" loc="(170,120)" name="Square AND gate">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="7" loc="(360,440)" name="Color Screen"/>
-    <comp lib="7" loc="(80,210)" name="Square AND gate"/>
-    <comp lib="4" loc="(280,100)" name="Counter"/>
-    <comp lib="3" loc="(220,420)" name="Multiplier"/>
-    <comp lib="7" loc="(110,200)" name="Square AND gate">
-      <a name="facing" val="west"/>
+    <comp lib="7" loc="(190,190)" name="Square AND gate">
+      <a name="Inputs" val="3"/>
+      <a name="Size" val="Narrow"/>
     </comp>
   </circuit>
 </project>
