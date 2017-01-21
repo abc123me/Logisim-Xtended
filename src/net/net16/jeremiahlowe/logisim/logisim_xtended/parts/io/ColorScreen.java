@@ -30,7 +30,7 @@ public class ColorScreen extends InstanceFactory{
 		setAttributes(new Attribute[] {
 				CommonAttr.SCREEN_SIZE, CommonAttr.COLOR_DETAIL,
 			}, new Object[] {
-				256, 8
+				256, 8 //TODO: Fix screen size
 			});
 		setIcon(IconGetter.getIcon("ColorScreen.png"));
 	}

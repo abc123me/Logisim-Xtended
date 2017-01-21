@@ -29,7 +29,7 @@ public class Screen extends InstanceFactory{
 		setAttributes(new Attribute[] {
 				CommonAttr.OFF_COLOR, CommonAttr.ON_COLOR, CommonAttr.SCREEN_SIZE
 			}, new Object[] {
-				Color.GRAY, Color.GREEN, 256
+				Color.GRAY, Color.GREEN, 256 //TODO: Fix screen size
 			});
 		setIcon(IconGetter.getIcon("Screen.png"));
 	}
