@@ -7,15 +7,9 @@ import com.cburch.logisim.tools.AddTool;
 import com.cburch.logisim.tools.Library;
 import com.cburch.logisim.tools.Tool;
 
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.BinToBCD;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.ColorScreen;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.RGBLed;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.RGBSquareLed;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.Screen;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.SquareLED;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.logic.SquareAND;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.logic.SquareOR;
-import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.logic.SquareXOR;
+import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.*;
+import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.io.*;
+import net.net16.jeremiahlowe.logisim.logisim_xtended.parts.logic.*;
 
 public class Components extends Library {
     private List<Tool> tools;
@@ -30,7 +24,8 @@ public class Components extends Library {
         	new AddTool(new BinToBCD()),
         	new AddTool(new SquareAND()),
         	new AddTool(new SquareOR()),
-        	new AddTool(new SquareXOR())
+        	new AddTool(new SquareXOR()),
+        	new AddTool(new ToggleButton())
     	});
     }
     

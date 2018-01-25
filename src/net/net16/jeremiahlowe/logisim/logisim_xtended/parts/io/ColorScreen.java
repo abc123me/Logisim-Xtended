@@ -61,12 +61,15 @@ public class ColorScreen extends InstanceFactory{
 	@Override
 	public void paintInstance(InstancePainter painter) {
 		State state = (State) painter.getData();
+		if(state == null)
+			return;
 		Graphics g = painter.getGraphics();
 		int size = (Integer) painter.getAttributeValue(CommonAttr.SCREEN_SIZE);
 		BufferedImage img = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
 		for(int x = 0; x < size; x++){
 			for(int y = 0; y < size; y++){
-				if(state.getPixel(x, y) == null) state.setPixel(x, y, new Pixel(Color.BLACK));
+				if(state.getPixel(x, y) == null) 
+					state.setPixel(x, y, new Pixel(Color.BLACK));
 				img.setRGB(x, y, state.getPixel(x, y).toColor().getRGB());
 			}
 		}
